@@ -5,80 +5,73 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProjectViewController">
    <children>
       <VBox prefHeight="100.0" prefWidth="300.0">
          <children>
-            <Label layoutX="43.0" layoutY="21.0" text="Hello! Welcome to the Interactive Calorie/">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="16.0" layoutY="91.0" text="required fields below. Required Fields have a * ">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="126.0" text="label beside them. Fields without * are optional.">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="30.0" layoutY="56.0" text="Macronutrient tracker! Please fill out all of">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </children>
-   <children>
-      <VBox prefHeight="100.0" prefWidth="300.0">
-         <children>
-            <ChoiceBox fx:id="sexChoiceBox" layoutX="94.0" layoutY="58.0" prefHeight="31.0" prefWidth="76.0" />
-            <Label layoutX="16.0" layoutY="63.0" text="* SEX:" />
-            <Label layoutX="15.0" layoutY="108.0" text="* AGE:" />
-            <Label layoutX="13.0" layoutY="150.0" text="* HEIGHT:" />
-            <Label layoutX="11.0" layoutY="197.0" text="* WEIGHT:" />
-            <Button fx:id="imperialButton" layoutX="45.0" mnemonicParsing="false" onAction="#imperialButtonClicked" text="Imperial">
-               <font>
-                  <Font size="19.0" />
-               </font>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="* SEX:" />
+                  <ChoiceBox fx:id="sexChoiceBox" prefHeight="31.0" prefWidth="76.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="* AGE:" />
+                  <TextField fx:id="ageTextField" prefHeight="31.0" prefWidth="44.0" />
+                  <Label text="Years Old" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="* HEIGHT:" />
+                  <TextField fx:id="heightTextField" prefHeight="31.0" prefWidth="47.0" />
+                  <Label fx:id="heightUnitLabel" text="inches" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="* WEIGHT:" />
+                  <TextField fx:id="weightTextField" prefHeight="31.0" prefWidth="45.0" />
+                  <Label fx:id="weightUnitLabel" text="lbs" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="* WEIGHT GOAL:" />
+                  <TextField fx:id="goalTextField" prefHeight="31.0" prefWidth="68.0" />
+                  <Label fx:id="goalUnitLabel" text="lbs" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="* TIMEFRAME:" />
+                  <TextField fx:id="timeTextField" prefHeight="32.0" prefWidth="68.0" />
+                  <Label text="weeks" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="AVERAGE DAILY" />
+                  <Label text="CALORIE INTAKE:" />
+                  <TextField fx:id="averageTextField" prefHeight="34.0" prefWidth="70.0" />
+                  <Label text="calories" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="ACTIVITY LEVEL:" />
+                  <ChoiceBox fx:id="bodyTypeChoiceBox" prefHeight="31.0" prefWidth="90.0" />
+               </children>
+            </HBox>
+            <Button fx:id="imperialButton" layoutX="45.0" mnemonicParsing="false" onAction="#imperialButtonClicked" text="Imperial">              
             </Button>
-            <Button fx:id="metricButton" layoutX="372.0" mnemonicParsing="false" onAction="#metricButtonClicked" text="Metric">
-               <font>
-                  <Font size="19.0" />
-               </font>
+            <Button fx:id="metricButton" layoutX="372.0" mnemonicParsing="false" onAction="#metricButtonClicked" text="Metric">               
             </Button>
-            <TextField fx:id="ageTextField" layoutX="94.0" layoutY="103.0" prefHeight="31.0" prefWidth="44.0" />
-            <TextField fx:id="heightTextField" layoutX="93.0" layoutY="145.0" prefHeight="31.0" prefWidth="47.0" />
-            <TextField fx:id="weightTextField" layoutX="94.0" layoutY="192.0" prefHeight="31.0" prefWidth="45.0" />
-            <Label layoutX="151.0" layoutY="108.0" text="Years Old" />
-            <Label fx:id="heightUnitLabel" layoutX="150.0" layoutY="150.0" text="inches" />
-            <Label fx:id="weightUnitLabel" layoutX="150.0" layoutY="197.0" text="lbs" />
             <Button fx:id="clearButton" layoutX="50.0" layoutY="264.0" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear">
-               <font>
-                  <Font size="19.0" />
-               </font>
             </Button>
             <Button fx:id="enterButton" layoutX="378.0" layoutY="264.0" mnemonicParsing="false" onAction="#enterButtonClicked" text="Enter">
-               <font>
-                  <Font size="19.0" />
-               </font>
             </Button>
-            <Label layoutX="245.0" layoutY="141.0" text="AVERAGE DAILY" />
-            <Label layoutX="243.0" layoutY="63.0" text="* WEIGHT GOAL:" />
-            <Label layoutX="242.0" layoutY="197.0" text="ACTIVITY LEVEL:" />
-            <Label layoutX="243.0" layoutY="108.0" text="* TIMEFRAME:" />
-            <TextField fx:id="goalTextField" layoutX="372.0" layoutY="58.0" prefHeight="31.0" prefWidth="68.0" />
-            <Label layoutX="242.0" layoutY="161.0" text="CALORIE INTAKE:" />
-            <Label fx:id="goalUnitLabel" layoutX="455.0" layoutY="63.0" text="lbs" />
-            <TextField fx:id="timeTextField" layoutX="372.0" layoutY="103.0" prefHeight="32.0" prefWidth="68.0" />
-            <TextField fx:id="averageTextField" layoutX="371.0" layoutY="144.0" prefHeight="34.0" prefWidth="70.0" />
-            <ChoiceBox fx:id="bodyTypeChoiceBox" layoutX="371.0" layoutY="192.0" prefHeight="31.0" prefWidth="90.0" />
-            <Label layoutX="454.0" layoutY="108.0" text="weeks" />
-            <Label layoutX="455.0" layoutY="151.0" text="calories" />
             <Label fx:id="validLabel" layoutX="155.0" layoutY="8.0" prefHeight="27.0" prefWidth="205.0" />
          </children>
       </VBox>
