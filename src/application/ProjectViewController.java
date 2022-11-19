@@ -59,20 +59,25 @@ public class ProjectViewController {
     private ChoiceBox<String> bodyTypeChoiceBox;
 
     @FXML
-    private ChoiceBox<String> sexChoiceBox;        
-    
-    @FXML
-    void initialize() {		
-    	}
+    private ChoiceBox<String> sexChoiceBox;                
+        
+    //Changes the calculation and labels to metric or imperial
+    public boolean isMetricUnit = false;
     
     @FXML
     void imperialButtonClicked(ActionEvent event) {
-    	
+    	isMetricUnit = false;
+    	heightUnitLabel.setText("inches");
+    	weightUnitLabel.setText("lbs");
+    	goalUnitLabel.setText("lbs");
     }
 
     @FXML
     void metricButtonClicked(ActionEvent event) {
-    	
+    	isMetricUnit = true;
+    	heightUnitLabel.setText("cm");
+    	weightUnitLabel.setText("kg");
+    	goalUnitLabel.setText("kg");
     }
 
     @FXML

@@ -1,81 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.collections.*?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProjectViewController">
    <children>
+      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="300.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="300.0" text="Calorie and MacroNurtients Calculator!">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="24.0" prefWidth="310.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="300.0" text="-- Required Fields start with a * --" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="17.0" prefWidth="300.0">
+         <children>
+            <Button fx:id="metricButton" mnemonicParsing="false" onAction="#metricButtonClicked" text="Metric">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+               </HBox.margin></Button>
+            <Button fx:id="imperialButton" mnemonicParsing="false" onAction="#imperialButtonClicked" text="Imperial">
+               <HBox.margin>
+                  <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+               </HBox.margin></Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </VBox.margin>
+      </HBox>
       <VBox prefHeight="100.0" prefWidth="300.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="* SEX:">
+                  <Label text="* Sex:">
                      <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin></Label>
-                  <ChoiceBox fx:id="sexChoiceBox" prefHeight="31.0" prefWidth="76.0" />
+                  <ChoiceBox fx:id="sexChoiceBox" prefHeight="31.0" prefWidth="76.0">    
+                  <items>
+            			<FXCollections fx:factory="observableArrayList">
+            				<String fx:value="Male" />
+            				<String fx:value="Female" />           			
+            			</FXCollections>
+            		</items>              	
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ChoiceBox>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="* AGE:" />
-                  <TextField fx:id="ageTextField" prefHeight="31.0" prefWidth="44.0" />
-                  <Label text="Years Old" />
+                  <Label text="* Age:">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="ageTextField" prefHeight="31.0" prefWidth="44.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextField>
+                  <Label text="Years Old">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="* HEIGHT:" />
-                  <TextField fx:id="heightTextField" prefHeight="31.0" prefWidth="47.0" />
-                  <Label fx:id="heightUnitLabel" text="inches" />
+                  <Label text="* Height:">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="heightTextField" prefHeight="31.0" prefWidth="47.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextField>
+                  <Label fx:id="heightUnitLabel" text="inches">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="* WEIGHT:" />
-                  <TextField fx:id="weightTextField" prefHeight="31.0" prefWidth="45.0" />
-                  <Label fx:id="weightUnitLabel" text="lbs" />
+                  <Label text="* Weight:">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="weightTextField" prefHeight="31.0" prefWidth="45.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextField>
+                  <Label fx:id="weightUnitLabel" text="lbs">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="* WEIGHT GOAL:" />
-                  <TextField fx:id="goalTextField" prefHeight="31.0" prefWidth="68.0" />
-                  <Label fx:id="goalUnitLabel" text="lbs" />
+                  <Label text="* Weight Goal:">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="goalTextField" prefHeight="31.0" prefWidth="68.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextField>
+                  <Label fx:id="goalUnitLabel" text="lbs">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="* TIMEFRAME:" />
-                  <TextField fx:id="timeTextField" prefHeight="32.0" prefWidth="68.0" />
-                  <Label text="weeks" />
+                  <Label text="* Timeframe:">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="timeTextField" prefHeight="32.0" prefWidth="68.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextField>
+                  <Label text="weeks">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="AVERAGE DAILY" />
-                  <Label text="CALORIE INTAKE:" />
-                  <TextField fx:id="averageTextField" prefHeight="34.0" prefWidth="70.0" />
-                  <Label text="calories" />
+                  <Label text="Average Daily Calorie Intake: ">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="averageTextField" prefHeight="34.0" prefWidth="70.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></TextField>
+                  <Label text="calories">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="ACTIVITY LEVEL:" />
-                  <ChoiceBox fx:id="bodyTypeChoiceBox" prefHeight="31.0" prefWidth="90.0" />
+                  <Label text="Activity Level: ">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Label>
+                  <ChoiceBox fx:id="bodyTypeChoiceBox" prefHeight="31.0" prefWidth="90.0">
+                  <items>
+            			<FXCollections fx:factory="observableArrayList">
+            				<String fx:value="None" />
+            				<String fx:value="Low" />
+            				<String fx:value="Moderate" />
+            				<String fx:value="Active" />
+            				<String fx:value="Very Active" />           			
+            			</FXCollections>
+            		</items>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></ChoiceBox>
                </children>
             </HBox>
-            <Button fx:id="imperialButton" layoutX="45.0" mnemonicParsing="false" onAction="#imperialButtonClicked" text="Imperial">              
-            </Button>
-            <Button fx:id="metricButton" layoutX="372.0" mnemonicParsing="false" onAction="#metricButtonClicked" text="Metric">               
-            </Button>
-            <Button fx:id="clearButton" layoutX="50.0" layoutY="264.0" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear">
-            </Button>
-            <Button fx:id="enterButton" layoutX="378.0" layoutY="264.0" mnemonicParsing="false" onAction="#enterButtonClicked" text="Enter">
-            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="enterButton" mnemonicParsing="false" onAction="#enterButtonClicked" text="Enter">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
             <Label fx:id="validLabel" layoutX="155.0" layoutY="8.0" prefHeight="27.0" prefWidth="205.0" />
          </children>
       </VBox>
