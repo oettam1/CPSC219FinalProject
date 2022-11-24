@@ -28,12 +28,13 @@ public class DisplayResults extends Application {
 		calorieText = String.valueOf(calculateCalories);
 		bmiText = String.valueOf(calculateBMI);
 		bmrText = String.valueOf(calculateBMR);
-		this.proteins = proteinAmount;
-		this.carbs = carbsAmount;
-		this.fats = fatAmount;
 		carbsText = String.valueOf(carbsAmount);
 		proteinText = String.valueOf(proteinAmount);
 		fatsText = String.valueOf(fatAmount);
+		
+		this.proteins = proteinAmount;
+		this.carbs = carbsAmount;
+		this.fats = fatAmount;
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class DisplayResults extends Application {
 		goalsVBox.getChildren().add(BMR);
 		
 		Button goBack = new Button("return");
-		//goBack.setOnAction(new ReturnButtonHandler());
+		//goBack.setOnAction(goBack);
 		
 		goalsVBox.getChildren().add(goBack);
 		
