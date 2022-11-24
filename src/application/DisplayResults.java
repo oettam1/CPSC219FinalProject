@@ -62,10 +62,10 @@ public class DisplayResults extends Application {
 		goalsVBox.getChildren().add(BMI);
 		goalsVBox.getChildren().add(BMR);
 		
-		Button goBack = new Button("return");
-		//goBack.setOnAction(goBack);
+		Button returnButton = new Button("return");
+		returnButton.setOnAction(new GoBackScene());
 		
-		goalsVBox.getChildren().add(goBack);
+		goalsVBox.getChildren().add(returnButton);
 		
 		ObservableList<PieChart.Data> pieChartData = 
 				FXCollections.observableArrayList(
