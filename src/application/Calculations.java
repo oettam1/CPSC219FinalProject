@@ -79,7 +79,7 @@ public class Calculations {
 			this.goalWeight = goalWeightSet;
 		}
 		
-		public int getProtein() {
+		public int getProteinAmount() {
 			return proteinAmount;
 		}
 		

@@ -64,6 +64,8 @@ public class ProjectViewController {
     //Changes the calculation and labels to metric or imperial
     public boolean isMetricUnit = false;
     
+    Calculations emptyPerson = new Calculations(0.0, 0.0, 0, "", "", "");
+    
     @FXML
     void imperialButtonClicked(ActionEvent event) {
     	isMetricUnit = false;
@@ -94,7 +96,12 @@ public class ProjectViewController {
 
     @FXML
     void enterButtonClicked(ActionEvent event) throws Exception {
-		
+    	emptyPerson.calculateCalories();
+		emptyPerson.calculateMacros();
+		Application Calculations = new DisplayResults(emptyPerson.calculateCalories(),emptyPerson.calculateBMI(),
+				emptyPerson.calculateBMR(), emptyPerson.getProteinAmount(),emptyPerson.getCarbsAmount(),emptyPerson.getFatAmount());
+		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		Calculations.start(window);
     }
     
     private boolean isInt(String input) {
