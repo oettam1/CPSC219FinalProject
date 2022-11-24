@@ -100,7 +100,7 @@ public class Calculations {
 		}
 		
 		public void setFatAmount(int setFat) {
-			this.carbsAmount = setFat;
+			this.fatAmount = setFat;
 		}
 		
 		public double getGoalTime() {
@@ -170,7 +170,35 @@ public class Calculations {
 		}
 		 
 		public void calculateMacros() {
+			if(getGoal() == "loss") {
+				setFatAmount((int) ((getCalories() * 0.20) / 9)) ;
+				setCarbsAmount((int)(getCalories() * 0.55) / 4);
+				setProteinAmount((int)(getCalories() * 0.25) / 4);
+			}
 			
+			else if(getGoal() == "quick loss") {
+				setFatAmount((int)(getCalories() * 0.25) / 9);
+				setCarbsAmount((int)(getCalories() * 0.45) / 4);
+				setProteinAmount((int)(getCalories() * 0.30) / 4);
+			}
+			
+			else if(getGoal() == "maintain") {
+				setFatAmount((int)(getCalories() * 0.25) / 9);
+				setCarbsAmount((int)(getCalories() * 0.50) / 4);
+				setProteinAmount((int)(getCalories() * 0.25) / 4);
+			}
+			
+			else if(getGoal() == "gain") {
+				setFatAmount((int)(getCalories() * 0.25) / 9);
+				setCarbsAmount((int)(getCalories() * 0.45) / 4);
+				setCarbsAmount((int)(getCalories() * 0.30) / 4);
+			}
+			
+			else if(getGoal() == "quick gain") {
+				setFatAmount((int)(getCalories() * 0.20) / 9);
+				setFatAmount((int)(getCalories() * 0.45) / 4);
+				setFatAmount((int)(getCalories() * 0.35) / 4);
+			}
 		}
 
 							
