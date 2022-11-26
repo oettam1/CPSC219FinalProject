@@ -6,7 +6,7 @@ public class Calculations {
 		private double height = 0.0;
 		private double goalWeight = 0.0;
 		private double goalTime = 1.0;
-		private double averageCalories = 2500.0;
+		private double averageCalories = 2000.0;
 		private double BMI;
 		private double BMR;
 		
@@ -123,8 +123,8 @@ public class Calculations {
 			return calories;
 		}
 		
-		public void setCalories(double calorieSet) {
-			this.averageCalories = calorieSet;
+		public void setCalories(int calorieSet) {
+			this.calories = calorieSet;
 		}
 		
 		double getBMI() {
@@ -152,21 +152,24 @@ public class Calculations {
 		//Calculate BMR
 		public double calculateBMR() {
 			
-			if (getSex() == "M") {
+			if (getSex().equals("Male")) {
 				setBMR((10 * getWeight()) + (6.25 * getHeight()) - (5* getAge()) + 5);
-			} else {
+				System.out.println("Did it");
+				} 
+			else {
 				setBMR((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 161);
-			}
+				System.out.println("wait");
+				}
 			return getBMR();
 		}
 		
 		// Goals factors
 		private int goalDifference(String aGoal) {
-			if(aGoal == "loss") return -250;
-			else if(aGoal == "quick loss") return -500;
-			else if(aGoal == "maintain") return 0;
-			else if(aGoal == "gain") return 250;
-			else if(aGoal == "quick gain") return 500;
+			if(aGoal.equals("loss")) return -250;
+			else if(aGoal.equals("quick loss")) return -500;
+			else if(aGoal.equals("maintain")) return 0;
+			else if(aGoal.equals("gain")) return 250;
+			else if(aGoal.equals("quick gain")) return 500;
 			else return 0;
 		}		
 		
@@ -176,31 +179,35 @@ public class Calculations {
 			double activityFactor = 0;
 			int goalFactor = 0;
 			 
-			if(getSex() == "M") {
+			if(getSex().equals("Male") ) {
 				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) + 5);
-			}
-			else if(getSex() == "F") {
+			System.out.println(getSex()+ "Marcvos");}
+			else if(getSex().equals("Female")) {
 				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 165);
-			}
+			
+				System.out.println("Marcos");}
+			else {System.out.println(getSex() + "Hold up wait a min");}
+			
 				
 				
-			if(getActivityLevel() == "none") {
+			if(getActivityLevel().equals("None")) {
 				activityFactor = 1.2;
 				goalFactor = goalDifference(getGoal());
 			}
-			else if(getActivityLevel() == "low") {
+			else if(getActivityLevel().equals("Low")) {
 				activityFactor = 1.375;
 				goalFactor = goalDifference(getGoal());
 			}
-			else if(getActivityLevel() == "moderate") {
+			else if(getActivityLevel().equals("Moderate")) {
 				activityFactor = 1.55;
 				goalFactor = goalDifference(getGoal());
+				System.out.println("Did it2");
 			}
-			else if(getActivityLevel() == "active ") {
+			else if(getActivityLevel().equals("Active")) {
 				activityFactor = 1.725;
 				goalFactor = goalDifference(getGoal());
 			}
-			else if(getActivityLevel() == "very active") {
+			else if(getActivityLevel().equals("Very Active")) {
 				activityFactor = 1.9;
 				goalFactor = goalDifference(getGoal());
 			}
@@ -212,31 +219,31 @@ public class Calculations {
 		 
 		// Macro Calculation
 		public void calculateMacros() {
-			if(getGoal() == "loss") {
+			if(getGoal().equals("loss")) {
 				setFatAmount((int) ((getCalories() * 0.20) / 9)) ;
 				setCarbsAmount((int)(getCalories() * 0.55) / 4);
 				setProteinAmount((int)(getCalories() * 0.25) / 4);
 			}
 			
-			else if(getGoal() == "quick loss") {
+			else if(getGoal().equals("quick loss")) {
 				setFatAmount((int)(getCalories() * 0.25) / 9);
 				setCarbsAmount((int)(getCalories() * 0.45) / 4);
 				setProteinAmount((int)(getCalories() * 0.30) / 4);
 			}
 			
-			else if(getGoal() == "maintain") {
+			else if(getGoal().equals("maintain")) {
 				setFatAmount((int)(getCalories() * 0.25) / 9);
 				setCarbsAmount((int)(getCalories() * 0.50) / 4);
 				setProteinAmount((int)(getCalories() * 0.25) / 4);
 			}
 			
-			else if(getGoal() == "gain") {
+			else if(getGoal().equals("gain")) {
 				setFatAmount((int)(getCalories() * 0.25) / 9);
 				setCarbsAmount((int)(getCalories() * 0.45) / 4);
 				setCarbsAmount((int)(getCalories() * 0.30) / 4);
 			}
 			
-			else if(getGoal() == "quick gain") {
+			else if(getGoal().equals("quick gain")) {
 				setFatAmount((int)(getCalories() * 0.20) / 9);
 				setFatAmount((int)(getCalories() * 0.45) / 4);
 				setFatAmount((int)(getCalories() * 0.35) / 4);

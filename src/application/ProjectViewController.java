@@ -62,9 +62,9 @@ public class ProjectViewController {
     private ChoiceBox<String> sexChoiceBox;                
         
     //Changes the calculation and labels to metric or imperial
+    Calculations emptyPerson = new Calculations(0.0, 0.0, 20, "Male", "null", "empty");
     public boolean isMetricUnit = false;
     
-    Calculations emptyPerson = new Calculations(0.0, 0.0, 0, "", "", "");
     
     @FXML
     void imperialButtonClicked(ActionEvent event) {
@@ -96,12 +96,130 @@ public class ProjectViewController {
 
     @FXML
     void enterButtonClicked(ActionEvent event) throws Exception {
-    	emptyPerson.calculateCalories();
-		emptyPerson.calculateMacros();
-		Application Calculations = new DisplayResults(emptyPerson.calculateCalories(),emptyPerson.calculateBMI(),
-				emptyPerson.calculateBMR(), emptyPerson.getProteinAmount(),emptyPerson.getCarbsAmount(),emptyPerson.getFatAmount());
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		Calculations.start(window);
+		
+		boolean valid = true;
+
+    	try {
+	    	if (sexChoiceBox.getSelectionModel().getSelectedIndex() ==-1 ||
+	    		sexChoiceBox.getSelectionModel().getSelectedIndex() == 0 ||
+	    		sexChoiceBox.getSelectionModel().getSelectedIndex() == 1) 	
+	    	{
+	    		emptyPerson.setSex(sexChoiceBox.getSelectionModel().getSelectedItem());
+	    		System.out.println(emptyPerson.getSex());
+	    		} 
+	    	else {
+	    		valid = false;
+	    		}
+	    	
+	    	if (ageTextField.getText().length() > 0 && isInt(ageTextField.getText()) == true &&
+	    			ageTextField.getText().contains("-") == false) { //this does your age
+	    		emptyPerson.setAge(Integer.parseInt(ageTextField.getText()));
+	    	} 
+	    	else {
+	    		valid = false;
+	    		ageTextField.setText(null);
+	    	}
+	    	
+	    	if (heightTextField.getText().length() > 0 && isDouble(heightTextField.getText()) == true &&
+	    			heightTextField.getText().contains("-") == false) { //this does your height
+	    		 if (isMetricUnit == true) {
+	    			 emptyPerson.setHeight(Double.parseDouble(heightTextField.getText()));
+	    		 } 
+	    		 else {
+	    			 emptyPerson.setHeight(Double.parseDouble(heightTextField.getText())* 2.54d);
+	    		 }
+	    	} 
+	    	else {
+	    		valid = false;
+	    		heightTextField.setText(null);
+	    	}
+	    	
+	    	if (weightTextField.getText().length() > 0 && isDouble(weightTextField.getText()) == true &&
+	    			weightTextField.getText().contains("-") == false) { //this does your weight
+	   		 	if (isMetricUnit == true) {
+	   		 		emptyPerson.setWeight(Double.parseDouble(weightTextField.getText())); 
+	   		 	} 
+	   		 	else {
+	   		 		emptyPerson.setWeight(Double.parseDouble(weightTextField.getText()) * 0.453d);
+	   		 	}
+	    	} 
+	    	else {
+	    		valid = false;
+	    		weightTextField.setText(null);
+	    	}
+	    	
+	    	if (goalTextField.getText().length() > 0 && isDouble(goalTextField.getText()) == true &&
+	    			goalTextField.getText().contains("-") == false) { //this does your weight
+	   		 	if (isMetricUnit == true) {
+	   		 		emptyPerson.setGoalWeight(Double.parseDouble(goalTextField.getText()));
+	   		 	} 
+	   		 	else {
+	   		 		emptyPerson.setGoalWeight(Double.parseDouble(goalTextField.getText())* 0.453d);
+	   		 	}
+	    	} 
+	    	else {
+	    		valid = false;
+	    		goalTextField.setText(null);
+	    	}
+	    	
+	    	if (timeTextField.getText().length() > 0 && isDouble(timeTextField.getText()) == true &&
+	    			timeTextField.getText().contains("-") == false) { //this does your time
+	   		 	emptyPerson.setGoalTime(Double.parseDouble(timeTextField.getText())); 
+	    	} 
+	    	else {
+	    		valid = false;
+	    		timeTextField.setText(null);
+	    	}
+	    	
+	    	if (averageTextField.getText().length() > 0 && isDouble(averageTextField.getText()) == true &&
+	    			averageTextField.getText().contains("-") == false) { //this does your time
+	   		 	emptyPerson.setAverageCalories(Double.parseDouble(averageTextField.getText()));
+	    	} 
+	    	else {
+	    		emptyPerson.setAverageCalories(2000.0d);
+	    		averageTextField.setText(null);
+	    	}
+	 
+	    	if (bodyTypeChoiceBox.getSelectionModel().getSelectedIndex() > -1) {
+	    		emptyPerson.setActivityLevel(bodyTypeChoiceBox.getSelectionModel().getSelectedItem());
+	    	} 
+	    	else {
+	    		emptyPerson.setActivityLevel("Moderate");
+	    		}
+    	}catch(NullPointerException npe) {
+    		//PUT ERROR LABEL STUFF HERE
+    	}
+    	
+    	if (emptyPerson.getWeight() > emptyPerson.getGoalWeight()) {
+    		if (emptyPerson.getGoalTime() < 12) {
+    			emptyPerson.setGoal("quick loss");
+    			}
+    		else{
+    				emptyPerson.setGoal("loss");
+    			}
+    	} 
+    	else if (emptyPerson.getWeight() < emptyPerson.getGoalWeight()) {
+    		if (emptyPerson.getGoalTime() < 12) {
+    			emptyPerson.setGoal("quick gain");
+    			} 
+    		else {
+    			emptyPerson.setGoal("gain"); }
+    			} 
+    	else {
+    			emptyPerson.setGoal("maintain");
+    	}	
+    	
+    	if(valid){
+    		emptyPerson.calculateCalories();
+    		emptyPerson.calculateMacros();
+    		Application DisplayResults = new DisplayResults(emptyPerson.calculateCalories(),emptyPerson.calculateBMI(),
+    				emptyPerson.calculateBMR(), emptyPerson.getProteinAmount(),emptyPerson.getCarbsAmount(),emptyPerson.getFatAmount());
+    		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    		DisplayResults.start(window);   		
+    	
+    	}else {
+    		validLabel.setText("please enter all required information");
+    	}
     }
     
     private boolean isInt(String input) {
