@@ -145,7 +145,7 @@ public class Calculations {
 		
 		//Calculate BMI Simple Calculation
 		public double calculateBMI() {
-			this.setBMI(getWeight() / getHeight() / getHeight() * 10000.0);
+			this.setBMI(Math.round((getWeight() / getHeight() / getHeight() * 10000.0) * 100.0) / 100.0);
 			return getBMI();
 		}
 		
@@ -153,12 +153,10 @@ public class Calculations {
 		public double calculateBMR() {
 			
 			if (getSex().equals("Male")) {
-				setBMR((10 * getWeight()) + (6.25 * getHeight()) - (5* getAge()) + 5);
-				System.out.println("Did it");
+				setBMR(Math.round(((10 * getWeight()) + (6.25 * getHeight()) - (5* getAge()) + 5) * 100.0) / 100.0);
 				} 
 			else {
-				setBMR((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 161);
-				System.out.println("wait");
+				setBMR(Math.round((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 161) * 100.0 / 100.0);
 				}
 			return getBMR();
 		}
@@ -181,14 +179,11 @@ public class Calculations {
 			 
 			if(getSex().equals("Male") ) {
 				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) + 5);
-			System.out.println(getSex()+ "Marcvos");}
+			}
 			else if(getSex().equals("Female")) {
 				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 165);
 			
-				System.out.println("Marcos");}
-			else {System.out.println(getSex() + "Hold up wait a min");}
-			
-				
+				}			
 				
 			if(getActivityLevel().equals("None")) {
 				activityFactor = 1.2;
