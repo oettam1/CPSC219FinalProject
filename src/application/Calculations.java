@@ -196,7 +196,6 @@ public class Calculations {
 			else if(getActivityLevel().equals("Moderate")) {
 				activityFactor = 1.55;
 				goalFactor = goalDifference(getGoal());
-				System.out.println("Did it2");
 			}
 			else if(getActivityLevel().equals("Active")) {
 				activityFactor = 1.725;

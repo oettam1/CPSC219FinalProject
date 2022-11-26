@@ -105,14 +105,14 @@ public class ProjectViewController {
 	    		sexChoiceBox.getSelectionModel().getSelectedIndex() == 1) 	
 	    	{
 	    		emptyPerson.setSex(sexChoiceBox.getSelectionModel().getSelectedItem());
-	    		System.out.println(emptyPerson.getSex());
+	    		//System.out.println(emptyPerson.getSex());
 	    		} 
 	    	else {
 	    		valid = false;
 	    		}
 	    	
 	    	if (ageTextField.getText().length() > 0 && isInt(ageTextField.getText()) == true &&
-	    			ageTextField.getText().contains("-") == false) { //this does your age
+	    			ageTextField.getText().contains("-") == false) { 
 	    		emptyPerson.setAge(Integer.parseInt(ageTextField.getText()));
 	    	} 
 	    	else {
@@ -121,7 +121,7 @@ public class ProjectViewController {
 	    	}
 	    	
 	    	if (heightTextField.getText().length() > 0 && isDouble(heightTextField.getText()) == true &&
-	    			heightTextField.getText().contains("-") == false) { //this does your height
+	    			heightTextField.getText().contains("-") == false) { 
 	    		 if (isMetricUnit == true) {
 	    			 emptyPerson.setHeight(Double.parseDouble(heightTextField.getText()));
 	    		 } 
@@ -135,7 +135,7 @@ public class ProjectViewController {
 	    	}
 	    	
 	    	if (weightTextField.getText().length() > 0 && isDouble(weightTextField.getText()) == true &&
-	    			weightTextField.getText().contains("-") == false) { //this does your weight
+	    			weightTextField.getText().contains("-") == false) { 
 	   		 	if (isMetricUnit == true) {
 	   		 		emptyPerson.setWeight(Double.parseDouble(weightTextField.getText())); 
 	   		 	} 
