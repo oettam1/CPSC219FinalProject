@@ -160,15 +160,57 @@ public class Calculations {
 			return getBMR();
 		}
 		
-		
+		// Goals factors
 		private int goalDifference(String aGoal) {
-			return 0;
+			if(aGoal == "loss") return -250;
+			else if(aGoal == "quick loss") return -500;
+			else if(aGoal == "maintain") return 0;
+			else if(aGoal == "gain") return 250;
+			else if(aGoal == "quick gain") return 500;
+			else return 0;
 		}		
 		
+		// Calorie Calculations
 		 public int calculateCalories() {
-			return 0;			
+			double maintenance = 0;
+			double activityFactor = 0;
+			int goalFactor = 0;
+			 
+			if(getSex() == "M") {
+				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) + 5);
+			}
+			else if(getSex() == "F") {
+				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 165);
+			}
+				
+				
+			if(getActivityLevel() == "none") {
+				activityFactor = 1.2;
+				goalFactor = goalDifference(getGoal());
+			}
+			else if(getActivityLevel() == "low") {
+				activityFactor = 1.375;
+				goalFactor = goalDifference(getGoal());
+			}
+			else if(getActivityLevel() == "moderate") {
+				activityFactor = 1.55;
+				goalFactor = goalDifference(getGoal());
+			}
+			else if(getActivityLevel() == "active ") {
+				activityFactor = 1.725;
+				goalFactor = goalDifference(getGoal());
+			}
+			else if(getActivityLevel() == "very active") {
+				activityFactor = 1.9;
+				goalFactor = goalDifference(getGoal());
+			}
+				
+			setCalories((int)(maintenance * activityFactor + goalFactor));
+				
+			return getCalories();		
 		}
 		 
+		// Macro Calculation
 		public void calculateMacros() {
 			if(getGoal() == "loss") {
 				setFatAmount((int) ((getCalories() * 0.20) / 9)) ;
