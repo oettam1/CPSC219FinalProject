@@ -62,7 +62,7 @@ public class ProjectViewController {
     private ChoiceBox<String> sexChoiceBox;                
         
     //Changes the calculation and labels to metric or imperial
-    Calculations emptyPerson = new Calculations(0.0, 0.0, 20, "Male", "null", "empty");
+    User emptyPerson = new User(0.0, 0.0, 20, "Male", "null", "empty");
     public boolean isMetricUnit = false;
     
     

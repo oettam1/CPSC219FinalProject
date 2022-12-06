@@ -1,6 +1,6 @@
 package application;
 
-public class Calculations {
+public class User {
 	
 		private double weight = 0.0;
 		private double height = 0.0;
@@ -20,7 +20,7 @@ public class Calculations {
 		private int carbsAmount;
 		private int fatAmount;
 		
-		Calculations(double aWeight, double aHeight, int aAge, String aSex, String aActivityLevel, String aGoal){
+		User(double aWeight, double aHeight, int aAge, String aSex, String aActivityLevel, String aGoal){
 		}
 		
 		public double getWeight() {
