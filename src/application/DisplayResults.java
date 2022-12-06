@@ -63,7 +63,7 @@ public class DisplayResults extends Application {
 		goalsVBox.getChildren().add(BMR);
 		
 		Button returnButton = new Button("return");
-		returnButton.setOnAction(new GoBackScene());
+		returnButton.setOnAction(new ReturnButtonHandler());
 		
 		goalsVBox.getChildren().add(returnButton);
 		
