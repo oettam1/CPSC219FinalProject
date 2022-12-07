@@ -20,6 +20,15 @@ public class User {
 		private int carbsAmount;
 		private int fatAmount;
 		
+		/**
+		 * 
+		 * @param aWeight
+		 * @param aHeight
+		 * @param aAge
+		 * @param aSex
+		 * @param aActivityLevel
+		 * @param aGoal
+		 */
 		User(double aWeight, double aHeight, int aAge, String aSex, String aActivityLevel, String aGoal){
 		}
 		
@@ -144,12 +153,19 @@ public class User {
 		}
 		
 		//Calculate BMI Simple Calculation
+		/**
+		 * 
+		 * @return
+		 */
 		public double calculateBMI() {
 			this.setBMI(Math.round((getWeight() / getHeight() / getHeight() * 10000.0) * 100.0) / 100.0);
 			return getBMI();
 		}
 		
-		//Calculate BMR
+		/**
+		 * 
+		 * @return
+		 */
 		public double calculateBMR() {
 			
 			if (getSex().equals("Male")) {
@@ -162,6 +178,11 @@ public class User {
 		}
 		
 		// Goals factors
+		/**
+		 * 
+		 * @param aGoal
+		 * @return
+		 */
 		private int goalDifference(String aGoal) {
 			if(aGoal.equals("loss")) return -250;
 			else if(aGoal.equals("quick loss")) return -500;
@@ -172,6 +193,10 @@ public class User {
 		}		
 		
 		// Calorie Calculations
+		/**
+		 * 
+		 * @return
+		 */
 		 public int calculateCalories() {
 			double maintenance = 0;
 			double activityFactor = 0;
@@ -212,6 +237,9 @@ public class User {
 		}
 		 
 		// Macro Calculation
+		 /**
+		  * 
+		  */
 		public void calculateMacros() {
 			if(getGoal().equals("loss")) {
 				setFatAmount((int) ((getCalories() * 0.20) / 9)) ;

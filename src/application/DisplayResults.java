@@ -24,6 +24,14 @@ public class DisplayResults extends Application {
 	int carbs;
 	int fats;
 
+	/**
+	 * @param calculateCalories
+	 * @param calculateBMI
+	 * @param calculateBMR
+	 * @param proteinAmount
+	 * @param carbsAmount
+	 * @param fatAmount
+	 */
 	public DisplayResults(int calculateCalories, double calculateBMI, double calculateBMR, int proteinAmount, int carbsAmount, int fatAmount) {
 		calorieText = String.valueOf(calculateCalories);
 		bmiText = String.valueOf(calculateBMI);
@@ -39,12 +47,11 @@ public class DisplayResults extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		VBox root = new VBox();
-		
-		
+		VBox root = new VBox();		
 		
 		VBox goalsVBox = new VBox();
 		
+		//Setting all the labels to their calculated values
 		Label calorieGoal = new Label("Your daily calorie goal is : " +  calorieText);
 		Label carbohydrateGoal = new Label("Your daily carbohydrate goal is: " +  carbsText + "g");
 		Label proteinGoal = new Label("Your daily protein goal is: " +  proteinText + "g");
@@ -55,6 +62,7 @@ public class DisplayResults extends Application {
 		goalsVBox.setAlignment(Pos.CENTER_LEFT);
 		goalsVBox.setSpacing(20);
 		
+		//Adding all the labels into the VBox
 		goalsVBox.getChildren().add(calorieGoal);
 		goalsVBox.getChildren().add(carbohydrateGoal);
 		goalsVBox.getChildren().add(proteinGoal);
@@ -62,11 +70,13 @@ public class DisplayResults extends Application {
 		goalsVBox.getChildren().add(BMI);
 		goalsVBox.getChildren().add(BMR);
 		
+		//Creating return button
 		Button returnButton = new Button("return");
 		returnButton.setOnAction(new ReturnButtonHandler());
 		
 		goalsVBox.getChildren().add(returnButton);
 		
+		//Creating Pie Chart
 		ObservableList<PieChart.Data> pieChartData = 
 				FXCollections.observableArrayList(
 				new PieChart.Data("Carbs", carbs),
@@ -82,8 +92,7 @@ public class DisplayResults extends Application {
 		chartBox.getChildren().add(goalsVBox);
 		
 		
-		root.getChildren().add(chartBox);
-		
+		root.getChildren().add(chartBox);		
 		
 		Scene scene = new Scene(root, 700, 400);		
 		primaryStage.setScene(scene);
