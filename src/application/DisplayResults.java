@@ -12,6 +12,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Creates the scene that we want to display all the calculated information on
+ * for the user to see. Also has a return button that allows the user to return
+ * back and enter information again. 
+ * @author CS219-user
+ *
+ */
 public class DisplayResults extends Application {
 	
 	String calorieText;
@@ -25,12 +32,14 @@ public class DisplayResults extends Application {
 	int fats;
 
 	/**
-	 * @param calculateCalories
-	 * @param calculateBMI
-	 * @param calculateBMR
-	 * @param proteinAmount
-	 * @param carbsAmount
-	 * @param fatAmount
+	 * Display Results constructor, creates skeleton of all the information we want
+	 * inputed so we can display all the correct info to the user. 
+	 * @param calculateCalories Calculated calorie value
+	 * @param calculateBMI Calculated BMI value
+	 * @param calculateBMR Calculated BMR value
+	 * @param proteinAmount Calculated Protein Amount value
+	 * @param carbsAmount Calculated Carbs Amount value
+	 * @param fatAmount Calculated Fat Amount value
 	 */
 	public DisplayResults(int calculateCalories, double calculateBMI, double calculateBMR, int proteinAmount, int carbsAmount, int fatAmount) {
 		calorieText = String.valueOf(calculateCalories);
@@ -46,6 +55,9 @@ public class DisplayResults extends Application {
 	}
 
 	@Override
+	/**
+	 * Start class, sets and formats information, and displays it to the user
+	 */
 	public void start(Stage primaryStage) throws Exception {
 		VBox root = new VBox();		
 		
@@ -89,8 +101,7 @@ public class DisplayResults extends Application {
 		HBox chartBox = new HBox();
 		
 		chartBox.getChildren().add(chart);
-		chartBox.getChildren().add(goalsVBox);
-		
+		chartBox.getChildren().add(goalsVBox);	
 		
 		root.getChildren().add(chartBox);		
 		
