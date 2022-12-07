@@ -96,16 +96,20 @@ public class ProjectViewController {
     @FXML
     void enterButtonClicked(ActionEvent event) throws Exception {
 		
-		boolean valid = true;
+		boolean valid = false;
 
     	try {
+    		while (valid != true) {
+  
 	    	if (sexChoiceBox.getSelectionModel().getSelectedIndex() ==-1 ||
 	    		sexChoiceBox.getSelectionModel().getSelectedIndex() == 0 ||
 	    		sexChoiceBox.getSelectionModel().getSelectedIndex() == 1) 	
 	    	{
 	    		emptyPerson.setSex(sexChoiceBox.getSelectionModel().getSelectedItem());
-	    		//System.out.println(emptyPerson.getSex());
+	    		System.out.println(emptyPerson.getSex());
+	    		valid = true;
 	    		} 
+	    	
 	    	else {
 	    		valid = false;
 	    		}
@@ -113,6 +117,7 @@ public class ProjectViewController {
 	    	if (ageTextField.getText().length() > 0 && isInt(ageTextField.getText()) == true &&
 	    			ageTextField.getText().contains("-") == false) { 
 	    		emptyPerson.setAge(Integer.parseInt(ageTextField.getText()));
+	    		valid = true;
 	    	} 
 	    	else {
 	    		valid = false;
@@ -127,6 +132,7 @@ public class ProjectViewController {
 	    		 else {
 	    			 emptyPerson.setHeight(Double.parseDouble(heightTextField.getText())* 2.54d);
 	    		 }
+	    		 valid = true;
 	    	} 
 	    	else {
 	    		valid = false;
@@ -141,6 +147,7 @@ public class ProjectViewController {
 	   		 	else {
 	   		 		emptyPerson.setWeight(Double.parseDouble(weightTextField.getText()) * 0.453d);
 	   		 	}
+	   		 valid = true;
 	    	} 
 	    	else {
 	    		valid = false;
@@ -155,6 +162,7 @@ public class ProjectViewController {
 	   		 	else {
 	   		 		emptyPerson.setGoalWeight(Double.parseDouble(goalTextField.getText())* 0.453d);
 	   		 	}
+	   		 valid = true;
 	    	} 
 	    	else {
 	    		valid = false;
@@ -164,6 +172,7 @@ public class ProjectViewController {
 	    	if (timeTextField.getText().length() > 0 && isDouble(timeTextField.getText()) == true &&
 	    			timeTextField.getText().contains("-") == false) { //this does your time
 	   		 	emptyPerson.setGoalTime(Double.parseDouble(timeTextField.getText())); 
+	   		 valid = true;
 	    	} 
 	    	else {
 	    		valid = false;
@@ -173,6 +182,7 @@ public class ProjectViewController {
 	    	if (averageTextField.getText().length() > 0 && isDouble(averageTextField.getText()) == true &&
 	    			averageTextField.getText().contains("-") == false) { //this does your time
 	   		 	emptyPerson.setAverageCalories(Double.parseDouble(averageTextField.getText()));
+	   		 	
 	    	} 
 	    	else {
 	    		emptyPerson.setAverageCalories(2000.0d);
@@ -181,12 +191,15 @@ public class ProjectViewController {
 	 
 	    	if (bodyTypeChoiceBox.getSelectionModel().getSelectedIndex() > -1) {
 	    		emptyPerson.setActivityLevel(bodyTypeChoiceBox.getSelectionModel().getSelectedItem());
+	    		
 	    	} 
 	    	else {
 	    		emptyPerson.setActivityLevel("Moderate");
-	    		}
+	    		}	    	
+    		}
     	}catch(NullPointerException npe) {
-    		//PUT ERROR LABEL STUFF HERE
+    		System.out.println("Testiong");
+    		valid = false;
     	}
     	
     	if (emptyPerson.getWeight() > emptyPerson.getGoalWeight()) {
