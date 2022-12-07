@@ -10,6 +10,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Controller Class that handles User Input and Button Click Actions
+ * @author CS219-user
+ *
+ */
 public class ProjectViewController {
 	
 	@FXML
@@ -62,19 +67,26 @@ public class ProjectViewController {
         
     //Empty person so we can add into the values calculated
     User emptyPerson = new User(0.0, 0.0, 20, "Male", "null", "empty");
-    public boolean isMetricUnit = false;
     
-    //Changes calculations and labels to imperial when button is clicked
+    public boolean isMetricUnit = false;
+        
     @FXML
+    /**
+     * Changes labels and variable so that Imperial is displayed and calculated
+     * @param event Button Clicked
+     */
     void imperialButtonClicked(ActionEvent event) {
     	isMetricUnit = false;
     	heightUnitLabel.setText("inches");
     	weightUnitLabel.setText("lbs");
     	goalUnitLabel.setText("lbs");
     }
-
-    //Changes calculations and labels to metric when button is clicked
+   
     @FXML
+    /**
+     * Changes labels and variable so that Metric is displayed and calculated
+     * @param event Button Clicked
+     */
     void metricButtonClicked(ActionEvent event) {
     	isMetricUnit = true;
     	heightUnitLabel.setText("cm");
@@ -82,8 +94,11 @@ public class ProjectViewController {
     	goalUnitLabel.setText("kg");
     }
 
-    //Clears all entries when the button is clicked
     @FXML
+    /**
+     * Clear Button clicked, clears all information input by the user
+     * @param event Button Clicked
+     */
     void clearButtonClicked(ActionEvent event) {
     	ageTextField.setText(null);
     	heightTextField.setText(null);
@@ -95,8 +110,12 @@ public class ProjectViewController {
     	sexChoiceBox.getSelectionModel().select(-1);
     }
     
-    //Checks all inputs are valid and changes scene when button is clicked
     @FXML
+    /**
+     * When the Enter button is clicked, verify info and pass that to the constructor
+     * @param event when button is presses
+     * @throws Exception Can throw errors if not all info is entered or invalid input is entered
+     */
     void enterButtonClicked(ActionEvent event) throws Exception {
 		
 		boolean valid = false;
@@ -253,9 +272,9 @@ public class ProjectViewController {
     	}
     
     /**
-     * 
-     * @param input
-     * @return
+     * Checks if input value is a Int
+     * @param input value we want to check
+     * @return true/false if value is Int or not
      */
     private boolean isInt(String input) {
 		
@@ -269,9 +288,9 @@ public class ProjectViewController {
 	}
     
     /**
-     * 
-     * @param input
-     * @return
+     * Checks if input value is a double
+     * @param input value we want to check
+     * @return true/false if value is double or not
      */
     private boolean isDouble(String input) {
 	

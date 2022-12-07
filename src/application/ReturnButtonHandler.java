@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 /**
- * 
+ * Return Button when clicked, returns back to the FinalProjectView Scene
  * @author CS219-user
  *
  */

@@ -1,5 +1,11 @@
 package application;
 
+/**
+ * Takes in all User information, does calculations on that information, and sets the
+ * values calculated to them so we can display that information to the User
+ * @author CS219-user
+ *
+ */
 public class User {
 	
 		private double weight = 0.0;
@@ -21,17 +27,19 @@ public class User {
 		private int fatAmount;
 		
 		/**
-		 * 
-		 * @param aWeight
-		 * @param aHeight
-		 * @param aAge
-		 * @param aSex
-		 * @param aActivityLevel
-		 * @param aGoal
+		 * User Constructor, sets all the information we want entered by the user so we 
+		 * can do the proper calculations
+		 * @param aWeight User Entered Weight
+		 * @param aHeight User Entered Height
+		 * @param aAge User Entered Age
+		 * @param aSex User Entered Sex
+		 * @param aActivityLevel User Entered Sex
+		 * @param aGoal User Entered Goal
 		 */
 		User(double aWeight, double aHeight, int aAge, String aSex, String aActivityLevel, String aGoal){
 		}
 		
+		//Getter and Setters for all Variables
 		public double getWeight() {
 			return weight;
 		}
@@ -152,10 +160,9 @@ public class User {
 			BMR = bMR;
 		}
 		
-		//Calculate BMI Simple Calculation
 		/**
-		 * 
-		 * @return
+		 * Calculates BMI based on information entered by the User
+		 * @return Calculated BMI
 		 */
 		public double calculateBMI() {
 			this.setBMI(Math.round((getWeight() / getHeight() / getHeight() * 10000.0) * 100.0) / 100.0);
@@ -163,8 +170,8 @@ public class User {
 		}
 		
 		/**
-		 * 
-		 * @return
+		 * Calculates BMR based on information entered by the User
+		 * @return Calculated BMR
 		 */
 		public double calculateBMR() {
 			
@@ -177,11 +184,10 @@ public class User {
 			return getBMR();
 		}
 		
-		// Goals factors
 		/**
-		 * 
-		 * @param aGoal
-		 * @return
+		 * Sets the Goal factor amount to a set value so we can use that value to do calculations
+		 * @param aGoal Weight loss goal we want to achieve
+		 * @return predetermined goal factor
 		 */
 		private int goalDifference(String aGoal) {
 			if(aGoal.equals("loss")) return -250;
@@ -192,10 +198,9 @@ public class User {
 			else return 0;
 		}		
 		
-		// Calorie Calculations
 		/**
-		 * 
-		 * @return
+		 * Calculates Calories based on information given by the user
+		 * @return Calculated Calorie Amounts
 		 */
 		 public int calculateCalories() {
 			double maintenance = 0;
@@ -238,7 +243,8 @@ public class User {
 		 
 		// Macro Calculation
 		 /**
-		  * 
+		  * Calculate Macros amount (Fats, Carbs, Protein) and sets the variables to the
+		  * calculated values. 
 		  */
 		public void calculateMacros() {
 			if(getGoal().equals("loss")) {
