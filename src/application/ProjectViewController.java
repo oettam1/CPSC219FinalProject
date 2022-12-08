@@ -123,35 +123,37 @@ public class ProjectViewController {
     	try {
     		while (valid != true) {
     			
-    			//Checks if the sexChoice box input is valid
-    			if (sexChoiceBox.getSelectionModel().getSelectedIndex() ==-1 ||
-    					sexChoiceBox.getSelectionModel().getSelectedIndex() == 0 ||
+    			//Checks if the sexChoice box input is valid    			
+    			if (sexChoiceBox.getSelectionModel().getSelectedIndex() == 0 ||
     					sexChoiceBox.getSelectionModel().getSelectedIndex() == 1) 	
     			{
     				emptyPerson.setSex(sexChoiceBox.getSelectionModel().getSelectedItem());
-    				System.out.println(emptyPerson.getSex());
+    				// System.out.println(emptyPerson.getSex()); DeBugging
     				valid = true;
 	    		} 
 	    	
     			else {
     				valid = false;
+    				validLabel.setText("Invalid Sex Input: No Chosen Sex");
+    				break;
 	    		}
 	    	
     			//Checks if the age text field is valid
     			if (ageTextField.getText().length() > 0 && isInt(ageTextField.getText()) == true &&
-	    			ageTextField.getText().contains("-") == false) { 
+	    			ageTextField.getText().contains("-") == false && valid == true) { 
     				emptyPerson.setAge(Integer.parseInt(ageTextField.getText()));
     				valid = true;
     			} 
 	    	
     			else {
     				valid = false;
-    				ageTextField.setText(null);
+    				validLabel.setText("Invalid Age: '" + ageTextField.getText() + "' Only enter valid numbers.");
+    				break;
     			}
 	    	
     			//Checks if the height text field is valid
     			if (heightTextField.getText().length() > 0 && isDouble(heightTextField.getText()) == true &&
-    					heightTextField.getText().contains("-") == false) { 
+    					heightTextField.getText().contains("-") == false && valid == true) { 
     				//Changes calculations if it is metric or not
     				if (isMetricUnit == true) {
     					emptyPerson.setHeight(Double.parseDouble(heightTextField.getText()));
@@ -163,12 +165,13 @@ public class ProjectViewController {
     			} 
     			else {
     				valid = false;
-    				heightTextField.setText(null);
+    				validLabel.setText("Invalid Height: '" + heightTextField.getText() + "' Only enter valid numbers.");
+    				break;
     			}
 	    	
     			//Checks if weight text field is valid
     			if (weightTextField.getText().length() > 0 && isDouble(weightTextField.getText()) == true &&
-    					weightTextField.getText().contains("-") == false) { 
+    					weightTextField.getText().contains("-") == false && valid == true) { 
     				//Changes calculations if it is metric or not
 	   		 		if (isMetricUnit == true) {
 	   		 			emptyPerson.setWeight(Double.parseDouble(weightTextField.getText())); 
@@ -180,12 +183,13 @@ public class ProjectViewController {
     			} 
     			else {
     				valid = false;
-    				weightTextField.setText(null);
+    				validLabel.setText("Invalid Weight: '" + weightTextField.getText() + "' Only enter valid numbers.");
+    				break;
     			}
 	    	
     			//Checks if the goal text field is valid
     			if (goalTextField.getText().length() > 0 && isDouble(goalTextField.getText()) == true &&
-    					goalTextField.getText().contains("-") == false) { 
+    					goalTextField.getText().contains("-") == false && valid == true) { 
     				//Changes calculations if it is metric or not and does weight 
 	   		 		if (isMetricUnit == true) {
 	   		 			emptyPerson.setGoalWeight(Double.parseDouble(goalTextField.getText()));
@@ -197,18 +201,20 @@ public class ProjectViewController {
     			} 
     			else {
     				valid = false;
-    				goalTextField.setText(null);
+    				validLabel.setText("Invalid Goal: '" + goalTextField.getText() + "' Only enter valid numbers.");
+    				break;
     			}
 	    	
     			//Checks if the timeTextField is valid
     			if (timeTextField.getText().length() > 0 && isDouble(timeTextField.getText()) == true &&
-    					timeTextField.getText().contains("-") == false) { //this does your time
+    					timeTextField.getText().contains("-") == false && valid == true) { //this does your time
 	   		 		emptyPerson.setGoalTime(Double.parseDouble(timeTextField.getText())); 
 	   		 		valid = true;
     			} 
     			else {
     				valid = false;
-    				timeTextField.setText(null);
+    				validLabel.setText("Invalid Time: '" + timeTextField.getText() + "' Only enter valid numbers.");
+    				break;
     			}
 	    	
     			//Checks if the average text field is valid
@@ -218,7 +224,6 @@ public class ProjectViewController {
     			} 
     			else {
     				emptyPerson.setAverageCalories(2000.0d);
-    				averageTextField.setText(null);
     			}
     			
     			//Checks if the body type choice box is valid
@@ -232,12 +237,13 @@ public class ProjectViewController {
     		
     		// If any errors occur, catch them here
     		}catch(NullPointerException npe) {
-    			System.out.println("Testiong");
+    			validLabel.setText("Entry is Invalid, only enter numbers. " + npe.getMessage() + ": Error Message");
     			valid = false;
     		}
     		
-    		//Checks where the persons entered weight loss goal should fall
+    		//If the entered weight is greater then goal weight, they want to lose weight
     		if (emptyPerson.getWeight() > emptyPerson.getGoalWeight()) {
+    			//If time frame is less then 12, they want to lose weight quickly
     			if (emptyPerson.getGoalTime() < 12) {
     				emptyPerson.setGoal("quick loss");
     			}
@@ -245,7 +251,9 @@ public class ProjectViewController {
     				emptyPerson.setGoal("loss");
     			}
     		} 
+    		//If the entered weight is less then goal weight, they want to gain weight
     		else if (emptyPerson.getWeight() < emptyPerson.getGoalWeight()) {
+    			//If time frame is less then 12, they want to gain weight quickly
     			if (emptyPerson.getGoalTime() < 12) {
     				emptyPerson.setGoal("quick gain");
     			} 
@@ -265,10 +273,7 @@ public class ProjectViewController {
     			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
     			DisplayResults.start(window);   		
     	
-    		}
-    		else {
-    			validLabel.setText("please enter all required information");
-    		}
+    		}   		
     	}
     
     /**

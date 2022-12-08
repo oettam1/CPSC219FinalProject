@@ -207,6 +207,7 @@ public class User {
 			double activityFactor = 0;
 			int goalFactor = 0;
 			 
+			//Male or female calculations maintenance calculations
 			if(getSex().equals("Male") ) {
 				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) + 5);
 			}
@@ -214,7 +215,8 @@ public class User {
 				maintenance = Math.ceil((10 * getWeight()) + (6.25 * getHeight()) - (5 * getAge()) - 165);
 			
 				}			
-				
+			
+			//Based on activity level, set the goal Factor
 			if(getActivityLevel().equals("None")) {
 				activityFactor = 1.2;
 				goalFactor = goalDifference(getGoal());
@@ -241,7 +243,6 @@ public class User {
 			return getCalories();		
 		}
 		 
-		// Macro Calculation
 		 /**
 		  * Calculate Macros amount (Fats, Carbs, Protein) and sets the variables to the
 		  * calculated values. 
